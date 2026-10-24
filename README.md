@@ -1,4 +1,4 @@
-# ML_2026_IUD
+# DIU_PI_2026
 
 Repositorio de referencia: un notebook ejecutable por clase que deja un resumen `.txt` en `reportes/`.
 
