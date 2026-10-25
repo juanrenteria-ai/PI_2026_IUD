@@ -6,21 +6,21 @@ Duplicados: 0
 
 Columnas y tipos:
 - ACC_ID: int64
-- ROAD_NO: str
-- ROAD_NAME: str
-- COMMON_ROAD_NAME: str
-- CARRIAGEWAY: str
+- ROAD_NO: object
+- ROAD_NAME: object
+- COMMON_ROAD_NAME: object
+- CARRIAGEWAY: object
 - STRAIGHT_LINE_KILOMETRE: float64
 - INTERSECTION_NO: float64
-- INTERSECTION_DESC: str
+- INTERSECTION_DESC: object
 - LONGITUDE: float64
 - LATITUDE: float64
-- CRASH_DATE: str
+- CRASH_DATE: object
 - CRASH_TIME: float64
-- ACCIDENT_TYPE: str
-- SEVERITY: str
-- EVENT_NATURE: str
-- EVENT_TYPE: str
+- ACCIDENT_TYPE: object
+- SEVERITY: object
+- EVENT_NATURE: object
+- EVENT_TYPE: object
 - TOTAL_BIKE_INVOLVED: int64
 - TOTAL_TRUCK_INVOLVED: int64
 - TOTAL_HEAVY_TRUCK_INVOLVED: int64
@@ -28,7 +28,7 @@ Columnas y tipos:
 - TOTAL_OTHER_VEHICLES_INVOLVED: int64
 - TOTAL_PEDESTRIANS_INVOLVED: int64
 - OBJECTID: int64
-- GlobalID: str
+- GlobalID: object
 
 Valores nulos por columna:
 - ACC_ID: 0

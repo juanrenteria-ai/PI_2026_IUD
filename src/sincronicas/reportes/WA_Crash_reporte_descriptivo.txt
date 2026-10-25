@@ -1,20 +1,20 @@
                       columna    tipo  valores_nulos  valores_unicos  valor_minimo  valor_maximo  longitud_minima  longitud_maxima
                        ACC_ID   int64              0           52656  9.927748e+06  1.118169e+07              NaN              NaN
-                      ROAD_NO     str              0            3644           NaN           NaN              4.0              7.0
-                    ROAD_NAME     str              0            3181           NaN           NaN              4.0             68.0
-             COMMON_ROAD_NAME     str              0            3208           NaN           NaN              5.0             68.0
-                  CARRIAGEWAY     str              0               3           NaN           NaN              1.0              1.0
+                      ROAD_NO  object              0            3644           NaN           NaN              4.0              7.0
+                    ROAD_NAME  object              0            3181           NaN           NaN              4.0             68.0
+             COMMON_ROAD_NAME  object              0            3208           NaN           NaN              5.0             68.0
+                  CARRIAGEWAY  object              0               3           NaN           NaN              1.0              1.0
       STRAIGHT_LINE_KILOMETRE float64              0            4443  0.000000e+00  2.701850e+03              NaN              NaN
               INTERSECTION_NO float64          21074            5480  6.900000e+01  2.888730e+05              NaN              NaN
-            INTERSECTION_DESC     str          21074            5376           NaN           NaN              9.0            283.0
+            INTERSECTION_DESC  object          21074            5376           NaN           NaN              9.0            283.0
                     LONGITUDE float64              0           22857  1.135681e+02  1.287533e+02              NaN              NaN
                      LATITUDE float64              0           23252 -3.504114e+01 -1.570270e+01              NaN              NaN
-                   CRASH_DATE     str              0            1826           NaN           NaN             10.0             10.0
+                   CRASH_DATE  object              0            1826           NaN           NaN             10.0             10.0
                    CRASH_TIME float64             37             629  0.000000e+00  2.359000e+03              NaN              NaN
-                ACCIDENT_TYPE     str              0               2           NaN           NaN              8.0             12.0
-                     SEVERITY     str              0               5           NaN           NaN              5.0              9.0
-                 EVENT_NATURE     str              0               1           NaN           NaN              8.0              8.0
-                   EVENT_TYPE     str              0               6           NaN           NaN              8.0             27.0
+                ACCIDENT_TYPE  object              0               2           NaN           NaN              8.0             12.0
+                     SEVERITY  object              0               5           NaN           NaN              5.0              9.0
+                 EVENT_NATURE  object              0               1           NaN           NaN              8.0              8.0
+                   EVENT_TYPE  object              0               6           NaN           NaN              8.0             27.0
           TOTAL_BIKE_INVOLVED   int64              0               4  0.000000e+00  3.000000e+00              NaN              NaN
          TOTAL_TRUCK_INVOLVED   int64              0               3  0.000000e+00  2.000000e+00              NaN              NaN
    TOTAL_HEAVY_TRUCK_INVOLVED   int64              0               4  0.000000e+00  3.000000e+00              NaN              NaN
@@ -22,4 +22,4 @@
 TOTAL_OTHER_VEHICLES_INVOLVED   int64              0               9  0.000000e+00  8.000000e+00              NaN              NaN
    TOTAL_PEDESTRIANS_INVOLVED   int64              0               4  0.000000e+00  4.000000e+00              NaN              NaN
                      OBJECTID   int64              0           52656  5.307372e+07  5.320082e+07              NaN              NaN
-                     GlobalID     str              0           52656           NaN           NaN             38.0             38.0
+                     GlobalID  object              0           52656           NaN           NaN             38.0             38.0
