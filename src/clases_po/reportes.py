@@ -36,6 +36,37 @@ class Reportes:
 
         return "\n".join(lineas) + "\n"
 
+    def reporte_descriptivo(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Devuelve tipo, límites y conteos descriptivos para cada columna."""
+        self._validar_dataframe(df)
+        metadatos = []
+
+        for columna in df.columns:
+            serie = df[columna]
+            registro = {
+                "columna": columna,
+                "tipo": str(serie.dtype),
+                "valores_nulos": int(serie.isna().sum()),
+                "valores_unicos": int(serie.nunique(dropna=True)),
+                "valor_minimo": None,
+                "valor_maximo": None,
+                "longitud_minima": None,
+                "longitud_maxima": None,
+            }
+
+            if pd.api.types.is_numeric_dtype(serie.dtype):
+                registro["valor_minimo"] = serie.min()
+                registro["valor_maximo"] = serie.max()
+            else:
+                longitudes = serie.dropna().astype("string").str.len()
+                if not longitudes.empty:
+                    registro["longitud_minima"] = int(longitudes.min())
+                    registro["longitud_maxima"] = int(longitudes.max())
+
+            metadatos.append(registro)
+
+        return pd.DataFrame(metadatos)
+
     def imprimir_reporte(self, df: pd.DataFrame) -> None:
         """Imprime en la consola el reporte del DataFrame."""
         print(self.generar_reporte(df), end="")
@@ -45,6 +76,16 @@ class Reportes:
         path = Path(ruta)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(self.generar_reporte(df), encoding="utf-8")
+        return path
+
+    def guardar_reporte_metadata(
+        self, metadata: pd.DataFrame, ruta: str | Path
+    ) -> Path:
+        """Guarda la metadata descriptiva como una tabla de texto."""
+        self._validar_dataframe(metadata)
+        path = Path(ruta)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(metadata.to_string(index=False) + "\n", encoding="utf-8")
         return path
 
     @staticmethod
