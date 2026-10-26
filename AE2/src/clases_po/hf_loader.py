@@ -13,7 +13,7 @@ class HFDatasetLoader:
 
     Args:
         dataset_name: Identificador del dataset en Hugging Face. Puede ser,
-            por ejemplo, ``"Fast_Food_Restaurants"`` si ese es el nombre del
+            por ejemplo, ``"kalley/WA_Crash"`` si ese es el nombre del
             repositorio del dataset.
         config: Configuración del dataset, si tiene más de una.
         split: División que se desea cargar.
