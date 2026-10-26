@@ -29,18 +29,44 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
+      - name: Crear entorno virtual
+        run: python -m venv .venv
+
       - name: Instalar dependencias
-        run: python -m pip install -r requirements.txt
+        run: |
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Limpiar reportes generados
+        run: |
+          mkdir -p AE2/resultados
+          find AE2/resultados -type f -name '*.txt' -delete
 
       - name: Ejecutar notebook AE2
         working-directory: AE2/notebooks
         run: |
+          source ../../.venv/bin/activate
           jupyter nbconvert \
             --to notebook \
             --execute \
             --inplace \
             --ExecutePreprocessor.timeout=1800 \
             Semana_1SINC.ipynb
+
+      - name: Verificar documentos generados
+        run: |
+          for archivo in \
+            AE2/resultados/resumen_dataframe.txt \
+            AE2/resultados/resumen_dataframe_metadata.txt \
+            AE2/resultados/WA_Crash_transformado.txt \
+            AE2/resultados/WA_Crash_reporte_descriptivo_transformado.txt
+          do
+            if ! test -s "$archivo"; then
+              echo "::error::No se generó el archivo requerido o está vacío: $archivo"
+              exit 1
+            fi
+          done
 
       - name: Confirmar cambios generados
         run: |
