@@ -41,8 +41,10 @@ class Reportes:
                 fecha_texto = fecha.isoformat()
             lineas.append(f"Fecha de generación: {fecha_texto}")
 
+        if len(lineas) > 2:
+            lineas.append("")
+
         lineas.extend([
-            "",
             f"Filas: {len(df)}",
             f"Columnas: {len(df.columns)}",
             f"Duplicados: {int(df.duplicated().sum())}",
