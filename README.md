@@ -11,9 +11,7 @@ Las entidades de seguridad vial necesitan relacionar la severidad de los
 accidentes con las condiciones en que ocurren para orientar la priorización de
 acciones de infraestructura, control y prevención.
 
-**Pregunta de análisis:** ¿cómo se distribuye la severidad (SEVERITY) de los
-accidentes registrados entre 2019 y 2023 según el tipo de calzada, la presencia
-de intersección, la franja horaria y los tipos de vehículos involucrados?
+**Pregunta de análisis:** ¿cómo se distribuye la severidad (SEVERITY) de los accidentes registrados entre 2019 y 2023 según el tipo de calzada, la presencia de intersección, la franja horaria y los tipos de vehículos involucrados?
 
 ## Integrantes
 
