@@ -1,6 +1,7 @@
 """Generación de reportes de DataFrames."""
 from __future__ import annotations
 
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -9,13 +10,39 @@ import pandas as pd
 class Reportes:
     """Imprime y guarda un resumen legible de un DataFrame."""
 
-    def generar_reporte(self, df: pd.DataFrame) -> str:
+    def generar_reporte(
+        self,
+        df: pd.DataFrame,
+        dataset_id: str | None = None,
+        split: str | None = None,
+        es_muestra: bool | None = None,
+        fecha_generacion: date | datetime | None = None,
+    ) -> str:
         """Genera el contenido textual del reporte."""
         self._validar_dataframe(df)
         numericas = df.select_dtypes(include="number")
         lineas = [
             "REPORTE DEL DATAFRAME",
             "=" * 60,
+        ]
+
+        if dataset_id is not None:
+            lineas.append(f"Dataset: {dataset_id}")
+        if split is not None:
+            lineas.append(f"Split: {split}")
+        if es_muestra is not None:
+            alcance = "Sí (muestra)" if es_muestra else "No (dataset completo)"
+            lineas.append(f"Es muestra: {alcance}")
+        if fecha_generacion is not None or dataset_id is not None:
+            fecha = fecha_generacion or datetime.now(timezone.utc)
+            if isinstance(fecha, datetime):
+                fecha_texto = fecha.isoformat(timespec="seconds")
+            else:
+                fecha_texto = fecha.isoformat()
+            lineas.append(f"Fecha de generación: {fecha_texto}")
+
+        lineas.extend([
+            "",
             f"Filas: {len(df)}",
             f"Columnas: {len(df.columns)}",
             f"Duplicados: {int(df.duplicated().sum())}",
@@ -25,7 +52,7 @@ class Reportes:
             "",
             "Valores nulos por columna:",
             *[f"- {columna}: {cantidad}" for columna, cantidad in df.isna().sum().items()],
-        ]
+        ])
 
         if not numericas.empty:
             lineas += [
@@ -67,15 +94,48 @@ class Reportes:
 
         return pd.DataFrame(metadatos)
 
-    def imprimir_reporte(self, df: pd.DataFrame) -> None:
+    def imprimir_reporte(
+        self,
+        df: pd.DataFrame,
+        dataset_id: str | None = None,
+        split: str | None = None,
+        es_muestra: bool | None = None,
+        fecha_generacion: date | datetime | None = None,
+    ) -> None:
         """Imprime en la consola el reporte del DataFrame."""
-        print(self.generar_reporte(df), end="")
+        print(
+            self.generar_reporte(
+                df,
+                dataset_id=dataset_id,
+                split=split,
+                es_muestra=es_muestra,
+                fecha_generacion=fecha_generacion,
+            ),
+            end="",
+        )
 
-    def guardar_reporte(self, df: pd.DataFrame, ruta: str | Path) -> Path:
+    def guardar_reporte(
+        self,
+        df: pd.DataFrame,
+        ruta: str | Path,
+        dataset_id: str | None = None,
+        split: str | None = None,
+        es_muestra: bool | None = None,
+        fecha_generacion: date | datetime | None = None,
+    ) -> Path:
         """Guarda el reporte en un archivo de texto y devuelve su ruta."""
         path = Path(ruta)
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(self.generar_reporte(df), encoding="utf-8")
+        path.write_text(
+            self.generar_reporte(
+                df,
+                dataset_id=dataset_id,
+                split=split,
+                es_muestra=es_muestra,
+                fecha_generacion=fecha_generacion,
+            ),
+            encoding="utf-8",
+        )
         return path
 
     def guardar_reporte_metadata(
