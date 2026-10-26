@@ -1,4 +1,4 @@
-name: Ejecutar EA1 - Carga de datos
+name: Ejecutar AE2 - Análisis WA_Crash
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ejecutar-semana-1-main
+  group: ejecutar-ae2-main
   cancel-in-progress: false
 
 jobs:
@@ -25,30 +25,16 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
           cache: pip
           cache-dependency-path: requirements.txt
 
-      - name: Crear entorno virtual
-        run: python -m venv .venv
-
       - name: Instalar dependencias
-        run: |
-          source .venv/bin/activate
-          .venv/bin/python -m pip install --upgrade pip
-          .venv/bin/python -m pip install -r requirements.txt
-          .venv/bin/python -m pip install pyarrow openpyxl
+        run: python -m pip install -r requirements.txt
 
-      - name: Limpiar datos y reportes generados
-        run: |
-          mkdir -p src/sincronicas/datos src/sincronicas/reportes
-          find src/sincronicas/datos -mindepth 1 -delete
-          find src/sincronicas/reportes -mindepth 1 -delete
-
-      - name: Ejecutar Semana_1SINC.ipynb
+      - name: Ejecutar notebook AE2
         working-directory: src/sincronicas
         run: |
-          source ../../.venv/bin/activate
           jupyter nbconvert \
             --to notebook \
             --execute \
@@ -60,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/sincronicas/datos src/sincronicas/reportes src/sincronicas/Semana_1SINC.ipynb
+          git add src/sincronicas/Semana_1SINC.ipynb src/sincronicas/reportes/*.txt
 
           if git diff --cached --quiet; then
             echo "No se generaron cambios."
