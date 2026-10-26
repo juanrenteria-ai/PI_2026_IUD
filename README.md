@@ -24,13 +24,16 @@ acciones de infraestructura, control y prevención.
 - **Identificador:** `kalley/WA_Crash`
 - **Enlace:** <https://huggingface.co/datasets/kalley/WA_Crash>
 - **Split:** `train` (dataset completo; no es muestra)
-- **Licencia declarada en Hugging Face:** Apache 2.0
+- **Licencia declarada en la ficha oficial de Hugging Face:** Apache 2.0 (`apache-2.0`), verificada el 2026-10-26.
+- **Datos sintéticos:** pendiente de verificar en la ficha; no se encontró una declaración explícita.
 - **Autenticación:** el dataset público no requiere token.
 
 El notebook descarga el dataset mediante `datasets` al ejecutarse y lo convierte
 a un DataFrame de pandas. No se versiona una copia CSV; Hugging Face conserva la
-caché local de la descarga. La licencia aquí indicada es la declarada en la
-ficha del dataset.
+caché local de la descarga. La licencia indicada corresponde a los metadatos de
+la [ficha oficial](https://huggingface.co/datasets/kalley/WA_Crash).
+
+El documento Word de la actividad se entregó por separado en la plataforma.
 
 ## Estructura del repositorio
 
