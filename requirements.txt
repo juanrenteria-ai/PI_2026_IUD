@@ -1,6 +1,7 @@
-numpy>=2.0,<3
-pandas==2.2.3
-matplotlib==3.9.4
+datasets==5.1.0
+ipykernel==6.29.5
+nbconvert==7.17.1
 notebook==7.2.3
-#ipykernel==6.29.5
-datasets
+numpy==2.3.4
+pandas==2.3.3
+pyarrow==26.0.0

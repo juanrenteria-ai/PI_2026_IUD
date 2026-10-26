@@ -153,6 +153,7 @@ activemq-data/
 .env
 .envrc
 .venv
+.venv-ae2/
 env/
 venv/
 ENV/
@@ -218,3 +219,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Dataset downloaded or exported locally
+**/WA_Crash.csv
