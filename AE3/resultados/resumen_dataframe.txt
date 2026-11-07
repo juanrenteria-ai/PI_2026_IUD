@@ -3,7 +3,7 @@ REPORTE DEL DATAFRAME
 Dataset: kalley/WA_Crash
 Split: train
 Es muestra: No (dataset completo)
-Fecha de generación: 2026-11-07T17:09:19+00:00
+Fecha de generación: 2026-11-07T17:16:28+00:00
 
 Filas: 127102
 Columnas: 18
