@@ -1,0 +1,6 @@
+Vehículos involucrados,Accidentes (n),% del total de accidentes,Fatal (n),Hospital (n),Medical (n),PDO Major (n),PDO Minor (n),Fatal (% de la fila),Hospital (% de la fila),Medical (% de la fila),PDO Major (% de la fila),PDO Minor (% de la fila),Graves (n),Graves (% de la fila)
+0 vehículos,5292,4.16,4,377,964,2655,1292,0.08,7.12,18.22,50.17,24.41,381,7.2
+1 vehículo,31178,24.53,491,2996,3064,15296,9331,1.57,9.61,9.83,49.06,29.93,3487,11.18
+2 vehículos,84111,66.18,209,2538,10652,47052,23660,0.25,3.02,12.66,55.94,28.13,2747,3.27
+3 o más vehículos,6521,5.13,31,353,1805,3865,467,0.48,5.41,27.68,59.27,7.16,384,5.89
+Total,127102,100.0,735,6264,16485,68868,34750,0.58,4.93,12.97,54.18,27.34,6999,5.51

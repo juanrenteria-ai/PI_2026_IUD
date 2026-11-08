@@ -1,0 +1,27 @@
+                      columna           tipo  valores_nulos  valores_unicos  valor_minimo  valor_maximo  longitud_minima  longitud_maxima
+                       ACC_ID          int64              0          127102  9.901842e+06  1.118169e+07              NaN              NaN
+                         CWAY         string              0               3           NaN           NaN              1.0              1.0
+              INTERSECTION_NO        float64          58979           12951  1.000000e+00  2.888730e+05              NaN              NaN
+            INTERSECTION_DESC         string          58979           12741           NaN           NaN              7.0            283.0
+                    LONGITUDE        float64              0           58607  1.056615e+02  1.289178e+02              NaN              NaN
+                     LATITUDE        float64              0           60241 -3.508765e+01 -1.044919e+01              NaN              NaN
+                   CRASH_DATE datetime64[ns]              0            1826           NaN           NaN             10.0             10.0
+                   CRASH_TIME          Int64            109            1336  0.000000e+00  2.359000e+03              NaN              NaN
+                ACCIDENT_TYPE         string              0               3           NaN           NaN              8.0             27.0
+                     SEVERITY         string              0               5           NaN           NaN              5.0              9.0
+                 EVENT_NATURE         string           7699               9           NaN           NaN              7.0             19.0
+                   EVENT_TYPE         string          93846               5           NaN           NaN             16.0             27.0
+          TOTAL_BIKE_INVOLVED          Int64              0               8  0.000000e+00  1.200000e+01              NaN              NaN
+         TOTAL_TRUCK_INVOLVED          Int64              0               3  0.000000e+00  2.000000e+00              NaN              NaN
+   TOTAL_HEAVY_TRUCK_INVOLVED          Int64              0               4  0.000000e+00  3.000000e+00              NaN              NaN
+   TOTAL_MOTOR_CYCLE_INVOLVED          Int64              0               4  0.000000e+00  3.000000e+00              NaN              NaN
+TOTAL_OTHER_VEHICLES_INVOLVED          Int64              0               9  0.000000e+00  8.000000e+00              NaN              NaN
+   TOTAL_PEDESTRIANS_INVOLVED          Int64              0               5  0.000000e+00  4.000000e+00              NaN              NaN
+                         ANIO          Int64              0               5  2.019000e+03  2.023000e+03              NaN              NaN
+                          MES          Int64              0              12  1.000000e+00  1.200000e+01              NaN              NaN
+                   DIA_SEMANA         string              0               7           NaN           NaN              5.0              9.0
+             ES_FIN_DE_SEMANA          int64              0               2  0.000000e+00  1.000000e+00              NaN              NaN
+               FRANJA_HORARIA         string              0               5           NaN           NaN              5.0              9.0
+          ESTADO_INTERSECCION         string              0               2           NaN           NaN             27.0             27.0
+ TOTAL_VEHICULOS_INVOLUCRADOS          Int64              0              11  0.000000e+00  1.200000e+01              NaN              NaN
+                     ES_GRAVE          int64              0               2  0.000000e+00  1.000000e+00              NaN              NaN

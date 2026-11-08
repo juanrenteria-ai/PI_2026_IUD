@@ -1,0 +1,9 @@
+tabla,cifras_esperadas,cifras_leidas,coincidencia_pct,estado
+tabla_calzada,28,29,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_interseccion,21,22,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_franja_horaria,40,43,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_tipo_vehiculo,42,46,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_anio,42,49,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_mes,87,101,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_dia_semana,55,58,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
+tabla_total_vehiculos,34,39,100.0,Coincide (modelo: nvidia/nemotron-parse (img))
