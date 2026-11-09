@@ -1,3 +1,4 @@
+
 """Enriquecimiento del conjunto WA_Crash y tablas de respuesta a las preguntas de negocio.
  
 Todas las variables derivadas se calculan con reglas deterministas sobre las
