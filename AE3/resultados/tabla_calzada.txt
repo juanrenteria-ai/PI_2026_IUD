@@ -1,0 +1,11 @@
+TABLA: tabla_calzada
+Pregunta: ¿Cómo se distribuye la severidad según el tipo de calzada (CWAY)?
+Total de filas: 4
+============================================================
+Tipo de calzada (CWAY)  Accidentes (n)  % del total de accidentes  Fatal (n)  Hospital (n)  Medical (n)  PDO Major (n)  PDO Minor (n)  Fatal (% de la fila)  Hospital (% de la fila)  Medical (% de la fila)  PDO Major (% de la fila)  PDO Minor (% de la fila)  Graves (n)  Graves (% de la fila)
+                     L           44758                      35.21         96          1645         6844          24205          11968                  0.21                     3.68                   15.29                     54.08                     26.74        1741                   3.89
+                     R           12390                       9.75         41           483         1721           6769           3376                  0.33                     3.90                   13.89                     54.63                     27.25         524                   4.23
+                     S           69954                      55.04        598          4136         7920          37894          19406                  0.85                     5.91                   11.32                     54.17                     27.74        4734                   6.77
+                 Total          127102                     100.00        735          6264        16485          68868          34750                  0.58                     4.93                   12.97                     54.18                     27.34        6999                   5.51
+
+Interpretación: Tasa global de accidentes graves (Fatal + Hospital): 5.51 %. Mayor volumen: S con 69,954 accidentes (55.04 % del total). Mayor proporción de graves: S con 6.77 %; la menor: L con 3.89 % (categorías con al menos 100 accidentes). Limitaciones: No hay datos de tránsito ni de longitud de cada tipo de calzada; un mayor número de accidentes puede reflejar más exposición y no más riesgo.

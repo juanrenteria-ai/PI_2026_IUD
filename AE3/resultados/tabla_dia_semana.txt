@@ -1,0 +1,15 @@
+TABLA: tabla_dia_semana
+Pregunta: ¿Son más graves los accidentes en fin de semana que en días laborales?
+Total de filas: 8
+============================================================
+Día de la semana  Accidentes (n)  % del total de accidentes  Fatal (n)  Hospital (n)  Medical (n)  PDO Major (n)  PDO Minor (n)  Fatal (% de la fila)  Hospital (% de la fila)  Medical (% de la fila)  PDO Major (% de la fila)  PDO Minor (% de la fila)  Graves (n)  Graves (% de la fila)
+           Lunes           17663                      13.90         62           820         2395           9429           4957                  0.35                     4.64                   13.56                     53.38                     28.06         882                   4.99
+          Martes           20213                      15.90         99           918         2802          10833           5561                  0.49                     4.54                   13.86                     53.59                     27.51        1017                   5.03
+       Miércoles           19914                      15.67        107           873         2687          10886           5361                  0.54                     4.38                   13.49                     54.67                     26.92         980                   4.92
+          Jueves           20689                      16.28         98           899         2760          11163           5769                  0.47                     4.35                   13.34                     53.96                     27.88         997                   4.82
+         Viernes           21956                      17.27        117          1052         2724          12071           5992                  0.53                     4.79                   12.41                     54.98                     27.29        1169                   5.32
+          Sábado           15262                      12.01        126           889         1776           8429           4042                  0.83                     5.82                   11.64                     55.23                     26.48        1015                   6.65
+         Domingo           11405                       8.97        126           813         1341           6057           3068                  1.10                     7.13                   11.76                     53.11                     26.90         939                   8.23
+           Total          127102                     100.00        735          6264        16485          68868          34750                  0.58                     4.93                   12.97                     54.18                     27.34        6999                   5.51
+
+Interpretación: Tasa global de accidentes graves (Fatal + Hospital): 5.51 %. Mayor volumen: Viernes con 21,956 accidentes (17.27 % del total). Mayor proporción de graves: Domingo con 8.23 %; la menor: Jueves con 4.82 % (categorías con al menos 100 accidentes). Limitaciones: Los fines de semana tienen otro patrón de viajes; sin exposición no se puede afirmar que sean más peligrosos.
