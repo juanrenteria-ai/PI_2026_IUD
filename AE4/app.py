@@ -17,6 +17,220 @@ RUTA_RESULTADOS = RAIZ_PROYECTO / "AE3" / "resultados"
 PERIODO = "2019–2023"
 
 
+def aplicar_estilos():
+    """Aplica la identidad visual de la aplicación con CSS propio."""
+    st.markdown(
+        """
+        <style>
+        :root {
+            --petroleo: #123B4A;
+            --ambar: #D28A16;
+            --tinta: #203541;
+            --borde: #D8E2E8;
+            --fondo-suave: #F1F5F7;
+        }
+
+        [data-testid="stAppViewContainer"] {
+            background: #F8FAFB;
+            color: var(--tinta);
+        }
+
+        [data-testid="stMainBlockContainer"] {
+            max-width: 1440px;
+            padding-top: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--petroleo);
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            margin-top: 1.8rem;
+            font-size: 1.45rem;
+        }
+
+        [data-testid="stMetric"] {
+            min-height: 112px;
+            padding: 1rem 1.1rem;
+            background: #FFFFFF;
+            border: 1px solid var(--borde);
+            border-left: 4px solid var(--ambar);
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(18, 59, 74, 0.07);
+        }
+
+        [data-testid="stMetricLabel"] p {
+            color: #536873;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        [data-testid="stMetricValue"] {
+            color: var(--petroleo);
+            font-weight: 700;
+            font-size: clamp(1.25rem, 2.1vw, 1.85rem);
+            line-height: 1.2;
+        }
+
+        [data-testid="stSidebar"] {
+            background: var(--fondo-suave);
+            border-right: 1px solid var(--borde);
+        }
+
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] p {
+            color: var(--petroleo);
+        }
+
+        .hero {
+            margin-bottom: 1.5rem;
+            padding: 2rem 2.2rem;
+            color: #FFFFFF;
+            background: var(--petroleo);
+            border-left: 6px solid var(--ambar);
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(18, 59, 74, 0.14);
+        }
+
+        .hero-kicker {
+            margin: 0 0 0.5rem;
+            color: #F4C66D;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0;
+            color: #FFFFFF;
+            font-size: clamp(1.7rem, 3vw, 2.35rem);
+        }
+
+        .hero-subtitle {
+            margin: 0.55rem 0 0;
+            color: #E5EEF2;
+            font-size: 1.05rem;
+        }
+
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            padding: 0.75rem 1rem;
+            color: #536873;
+            font-weight: 600;
+        }
+
+        .stTabs [aria-selected="true"] {
+            color: var(--petroleo);
+        }
+
+        .app-footer {
+            margin-top: 3rem;
+            padding: 1.2rem 0 0.3rem;
+            color: #536873;
+            border-top: 1px solid var(--borde);
+            font-size: 0.86rem;
+            line-height: 1.7;
+        }
+
+        .app-footer strong {
+            color: var(--petroleo);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def configurar_idioma_del_navegador():
+    """Evita que el navegador traduzca el documento de Streamlit."""
+    if not st.session_state.get("idioma_navegador_configurado", False):
+        st.components.v1.html(
+            """
+            <script>
+            window.parent.document.documentElement.lang = "es";
+            window.parent.document.documentElement.setAttribute("translate", "no");
+            if (!window.parent.document.head.querySelector(
+                'meta[name="google"][content="notranslate"]'
+            )) {
+                const meta = window.parent.document.createElement("meta");
+                meta.name = "google";
+                meta.content = "notranslate";
+                window.parent.document.head.appendChild(meta);
+            }
+            </script>
+            """,
+            height=0,
+        )
+        st.session_state["idioma_navegador_configurado"] = True
+
+
+def aplicar_estilo_grafico(figura, datos, es_linea):
+    """Uniforma la paleta, tipografía, ejes y rejilla de todos los gráficos."""
+    indice_mayor = datos["Graves (% de la fila)"].idxmax()
+    colores = [
+        "#B7473D" if indice == indice_mayor else "#78909C"
+        for indice in datos.index
+    ]
+
+    if es_linea:
+        figura.update_traces(
+            line={"color": "#78909C", "width": 3},
+            marker={
+                "color": colores,
+                "size": 10,
+                "line": {"color": "#FFFFFF", "width": 1.5},
+            },
+        )
+    else:
+        figura.update_traces(
+            marker={
+                "color": colores,
+                "line": {"color": "#FFFFFF", "width": 1},
+            }
+        )
+
+    figura.update_layout(
+        font={"family": "Arial, sans-serif", "size": 14, "color": "#203541"},
+        title={"font": {"size": 20, "color": "#123B4A"}, "x": 0.02},
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        margin={"l": 24, "r": 24, "t": 70, "b": 35},
+        hoverlabel={"bgcolor": "#FFFFFF", "font": {"color": "#203541"}},
+        xaxis={
+            "title": "Año" if es_linea else "Categoría",
+            "showgrid": False,
+            "automargin": True,
+            "tickfont": {"size": 13},
+        },
+        yaxis={
+            "title": "Accidentes graves (% de accidentes de la categoría)",
+            "showgrid": True,
+            "gridcolor": "#E2E9ED",
+            "zeroline": False,
+            "ticksuffix": "%",
+            "automargin": True,
+        },
+        uniformtext_minsize=8,
+        uniformtext_mode="hide",
+    )
+
+
+configurar_idioma_del_navegador()
+aplicar_estilos()
+
+
 @st.cache_data
 def cargar_tabla(nombre_archivo):
     """Lee y almacena en caché una de las tablas publicadas en AE3."""
@@ -238,18 +452,16 @@ def mostrar_pregunta(nombre, configuracion):
             "<br>Accidentes graves: %{customdata[1]:,}<extra></extra>"
         ),
     )
-    figura.update_layout(
-        yaxis_title="Accidentes graves (% de accidentes de la categoría)",
-        xaxis_title="Año" if nombre.startswith("P5") else "Categoría",
-        yaxis_ticksuffix="%",
-        uniformtext_minsize=8,
-        uniformtext_mode="hide",
-    )
-    st.plotly_chart(figura, width="stretch")
+    es_linea = nombre.startswith("P5")
+    aplicar_estilo_grafico(figura, datos, es_linea)
 
-    st.subheader("Interpretación")
-    st.write(configuracion["lectura"])
-    st.info(f"**Limitación de esta pregunta:** {configuracion['limite']}")
+    pestanas = st.tabs(["Gráfico", "Interpretación", "Limitaciones"])
+    with pestanas[0]:
+        st.plotly_chart(figura, width="stretch")
+    with pestanas[1]:
+        st.write(configuracion["lectura"])
+    with pestanas[2]:
+        st.info(configuracion["limite"])
 
 
 def mostrar_inicio():
@@ -258,8 +470,18 @@ def mostrar_inicio():
     graves = int(resumen["Fatal (n)"] + resumen["Hospital (n)"])
     porcentaje_grave = graves / accidentes * 100
 
-    st.title("Severidad de accidentes de tránsito")
-    st.subheader("Australia Occidental · 2019–2023")
+    st.markdown(
+        """
+        <section class="hero">
+            <p class="hero-kicker">Proyecto Integrador · AE4</p>
+            <h1>Severidad de accidentes de tránsito</h1>
+            <p class="hero-subtitle">
+                Australia Occidental · Periodo de análisis: <strong>2019–2023</strong>
+            </p>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
     st.write(
         "Las entidades de seguridad vial cuentan con muchos registros, pero un "
         "conteo total no distingue entre numerosos accidentes leves y menos "
@@ -272,16 +494,12 @@ def mostrar_inicio():
         "y los tipos de vehículos involucrados?"
     )
 
-    columnas = st.columns(4)
-    columnas[0].metric("Accidentes", formato_entero(accidentes))
-    columnas[1].metric(
-        "Accidentes graves",
-        formato_entero(graves),
-        f"{porcentaje_grave:.2f} %",
-        help="Graves = Fatal + Hospital; porcentaje sobre el total de accidentes.",
-    )
-    columnas[2].metric("Periodo analizado", PERIODO)
-    columnas[3].metric("Fuente", "kalley/WA_Crash")
+    primera_fila = st.columns(2)
+    primera_fila[0].metric("Accidentes", formato_entero(accidentes))
+    primera_fila[1].metric("Accidentes graves", formato_entero(graves))
+    segunda_fila = st.columns(2)
+    segunda_fila[0].metric("Graves (%)", f"{porcentaje_grave:.2f} %")
+    segunda_fila[1].metric("Periodo analizado", PERIODO)
     st.caption(
         "Fuente original: Main Roads Western Australia (Data WA). "
         "El análisis usa tablas de resultados ya preparadas; no vuelve a procesar "
@@ -359,3 +577,16 @@ elif seccion == "Conclusiones y límites":
     mostrar_conclusiones()
 else:
     mostrar_pregunta(seccion, PREGUNTAS[seccion])
+
+st.markdown(
+    """
+    <footer class="app-footer">
+        <strong>Proyecto Integrador de Analítica de Datos</strong><br>
+        Juan Felipe Valencia Renteria · Cristian Mateo Piedrahita Arango ·
+        Diego Alejandro Barros Ballestas<br>
+        Institución Universitaria Digital de Antioquia · Fuente:
+        kalley/WA_Crash, Main Roads Western Australia (Data WA)
+    </footer>
+    """,
+    unsafe_allow_html=True,
+)
