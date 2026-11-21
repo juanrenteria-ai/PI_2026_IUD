@@ -176,11 +176,10 @@ def configurar_idioma_del_navegador():
         st.session_state["idioma_navegador_configurado"] = True
 
 
-def aplicar_estilo_grafico(figura, datos, es_linea):
+def aplicar_estilo_grafico(figura, datos, es_linea, indice_destacado):
     """Uniforma la paleta, tipografía, ejes y rejilla de todos los gráficos."""
-    indice_mayor = datos["Graves (% de la fila)"].idxmax()
     colores = [
-        "#B7473D" if indice == indice_mayor else "#78909C"
+        "#B7473D" if indice == indice_destacado else "#78909C"
         for indice in datos.index
     ]
 
@@ -387,7 +386,13 @@ def preparar_datos(nombre_archivo):
 
 def mostrar_pregunta(nombre, configuracion):
     datos, columna_categoria = preparar_datos(configuracion["archivo"])
-    indice_mayor = datos["Graves (% de la fila)"].idxmax()
+    datos_para_destacar = datos
+    if nombre.startswith("P3"):
+        # Los registros sin hora siguen en la gráfica, pero no compiten por el destacado.
+        datos_para_destacar = datos[
+            datos[columna_categoria].astype(str).str.casefold() != "sin dato"
+        ]
+    indice_mayor = datos_para_destacar["Graves (% de la fila)"].idxmax()
     categoria_mayor = datos.loc[indice_mayor]
 
     st.title(configuracion["pregunta"])
@@ -453,11 +458,22 @@ def mostrar_pregunta(nombre, configuracion):
         ),
     )
     es_linea = nombre.startswith("P5")
-    aplicar_estilo_grafico(figura, datos, es_linea)
+    aplicar_estilo_grafico(figura, datos, es_linea, indice_mayor)
 
     pestanas = st.tabs(["Gráfico", "Interpretación", "Limitaciones"])
     with pestanas[0]:
         st.plotly_chart(figura, width="stretch")
+        if nombre.startswith("P3"):
+            cantidad_sin_hora = int(
+                datos.loc[
+                    datos[columna_categoria].astype(str).str.casefold() == "sin dato",
+                    "Accidentes (n)",
+                ].sum()
+            )
+            st.caption(
+                f"“Sin dato” se mantiene visible: son {formato_entero(cantidad_sin_hora)} "
+                "registros sin hora y por eso no se destaca."
+            )
     with pestanas[1]:
         st.write(configuracion["lectura"])
     with pestanas[2]:
