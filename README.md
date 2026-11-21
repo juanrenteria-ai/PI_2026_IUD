@@ -116,6 +116,22 @@ Todas las salidas se guardan en `AE3/resultados/`.
 
 Nombres de tabla: `calzada`, `interseccion`, `franja_horaria`, `tipo_vehiculo`, `anio`, `mes`, `dia_semana`, `total_vehiculos`.
 
+## AE4: métricas y visualización
+
+La aplicación presenta las ocho preguntas de negocio con métricas, gráficos
+interactivos y una interpretación descriptiva. Para ejecutarla desde la raíz del
+repositorio:
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run AE4/app.py
+```
+
+La app lee únicamente las tablas de `AE3/resultados/tabla_*.csv`; no necesita
+cargar `WA_Crash_enriquecido.csv`. Las rutas se construyen desde `AE4/app.py`
+para permitir la ejecución local y en Streamlit Community Cloud. Al publicarla,
+el enlace estará disponible aquí: **[pendiente de publicación]**.
+
 ## Tablas de resultados
 
 Distribución general: Fatal 735 (0,58 %), Hospital 6.264 (4,93 %), Medical 16.485 (12,97 %), PDO Major 68.868 (54,18 %), PDO Minor 34.750 (27,34 %). **Graves (Fatal + Hospital): 6.999 (5,51 %).**
