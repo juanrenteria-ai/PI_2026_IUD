@@ -4,6 +4,8 @@ Proyecto Integrador III de Analítica de Datos, Institución Universitaria Digit
 
 Este README documenta la actividad **AE3: Transformación y enriquecimiento de datos**. Para AE2 (ideación y documentación de la necesidad) véase `AE2/`.
 
+**Aplicación publicada:** https://pi2026iud-6kblhuwj7qk48u4pnacwyj.streamlit.app/
+
 ## Integrantes
 
 - Juan Felipe Valencia Renteria
